@@ -1,0 +1,101 @@
+.splash-page {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 410px;
+  max-width: 410px;
+  height: 100vh;
+  background: #FFFFFF;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0;
+  z-index: 9999;
+}
+
+.splash-overlay {
+  position: absolute;
+  inset: 0;
+  top: 197px;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(0, 0, 0, 0.5) 100%);
+  mix-blend-mode: multiply;
+}
+
+.splash-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 46px;
+  margin-bottom: 120px;
+}
+
+.splash-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 56px;
+  color: #F1C40E;
+  margin: 0;
+}
+
+.splash-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin-top: 24px;
+  position: relative;
+  padding-left: 47px;
+}
+
+.splash-subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 31px;
+  height: 2px;
+  background: #FFFFFF;
+}
+
+.splash-btn {
+  position: relative;
+  z-index: 1;
+  width: 178px;
+  height: 50px;
+  background: #F1C40E;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 35px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.302);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s, box-shadow 0.2s;
+  margin: 0 auto 98px;
+  display: block;
+}
+
+.splash-btn--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.splash-btn:hover {
+  background: #f5d348;
+  box-shadow: 0px 25px 30px rgba(0, 0, 0, 0.35);
+}
