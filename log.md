@@ -18,7 +18,14 @@ Design systemet blev sat op med #F1C40E som primær farve, Poppins font fra Goog
 Splash page'n fik korrekt layout med baggrundsbillede (Rectangle 1655.png), tekst positioneret i bunden til venstre, og knap centreret nederst med 98px margin. Alle komponenter bruger Poppins font, afrundede knapper med 100px border-radius, og den gule farve til tekst og knapper
 ## Dag 2
 
-Morgen - (tidspunkt)  
+Morgen - (10.30)  
+Jeg har arbejdet på HomePage. Jeg tilføjede welcome.jpg som baggrundsbillede på hero-sektionen. Jeg oprettede en services/api.js fil som forbinder til backend API på port 4000 - den henter nyheder og anmeldelser, og håndterer nyhedsbrev og kontaktformular.
+
+Jeg kopierede billeder fra API-mappen til public-mappen (juice.jpg, bootcamp.jpg, thirtydaychallenge.jpg, qrcode.jpg) så nyhedsartiklerne viser billeder. welcome - center.png blev sat som baggrund på anmeldelser-sektionen.
+
+Jeg lavede en burger-menu der åbner et navigationsmenu med links til Home, Classes, Trainers, Contact us og Log in.
+
+
 Eftermiddag - (tidspunkt)
 
 ## Dag 3
