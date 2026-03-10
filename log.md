@@ -26,7 +26,13 @@ Jeg kopierede billeder fra API-mappen til public-mappen (juice.jpg, bootcamp.jpg
 Jeg lavede en burger-menu der åbner et navigationsmenu med links til Home, Classes, Trainers, Contact us og Log in.
 
 
-Eftermiddag - (tidspunkt)
+Eftermiddag - (15.30)
+
+Jeg lavede ClassesPage som viser alle klasser fra API'et. Den store klasse øverst er "Lower Abs Workout" og de andre klasser vises som et vandret scroll-slider nedenunder.
+
+Jeg lavede ClassDetailPage som viser et billede af klassen, titel, dag og tid, beskrivelse, trænerens billede og navn, og en SIGN UP knap.
+
+Jeg tilføjede getClasses, getClass og getAsset funktioner i api.js. 
 
 ## Dag 3
 

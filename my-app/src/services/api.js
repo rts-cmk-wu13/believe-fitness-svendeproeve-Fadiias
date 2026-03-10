@@ -19,6 +19,21 @@ export async function subscribeNewsletter(email) {
   return res.json();
 }
 
+export async function getClasses() {
+  const res = await fetch(`${BASE_URL}/api/v1/classes`);
+  return res.json();
+}
+
+export async function getClass(id) {
+  const res = await fetch(`${BASE_URL}/api/v1/classes/${id}`);
+  return res.json();
+}
+
+export async function getAsset(id) {
+  const res = await fetch(`${BASE_URL}/api/v1/assets/${id}`);
+  return res.json();
+}
+
 export async function sendMessage(name, email, message) {
   const res = await fetch(`${BASE_URL}/api/v1/messages`, {
     method: 'POST',
