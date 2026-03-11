@@ -24,6 +24,11 @@ export async function getClasses() {
   return res.json();
 }
 
+export async function getTrainers() {
+  const res = await fetch(`${BASE_URL}/api/v1/trainers`);
+  return res.json();
+}
+
 export async function getClass(id) {
   const res = await fetch(`${BASE_URL}/api/v1/classes/${id}`);
   return res.json();
@@ -31,6 +36,24 @@ export async function getClass(id) {
 
 export async function getAsset(id) {
   const res = await fetch(`${BASE_URL}/api/v1/assets/${id}`);
+  return res.json();
+}
+
+export async function login(username, password) {
+  const body = new URLSearchParams({ username, password });
+  const res = await fetch(`${BASE_URL}/auth/token`, {
+    method: 'POST',
+    body,
+  });
+  return res.json();
+}
+
+export async function signup(username, password) {
+  const body = new URLSearchParams({ username, password });
+  const res = await fetch(`${BASE_URL}/api/v1/users`, {
+    method: 'POST',
+    body,
+  });
   return res.json();
 }
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getNews, getTestimonials, subscribeNewsletter, sendMessage } from '../services/api';
+import NavMenu from '../components/NavMenu';
 import './HomePage.css';
 
 function HomePage() {
@@ -73,19 +74,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Navigation Overlay */}
-      {menuOpen && (
-        <div className="nav-overlay">
-          <div className="nav-overlay__close" onClick={() => setMenuOpen(false)}>✕</div>
-          <nav className="nav-overlay__links">
-            <a onClick={() => { setMenuOpen(false); navigate('/home'); }}>Home</a>
-            <a onClick={() => { setMenuOpen(false); navigate('/classes'); }}>Classes</a>
-            <a onClick={() => { setMenuOpen(false); navigate('/trainers'); }}>Trainers</a>
-            <a onClick={() => { setMenuOpen(false); navigate('/contact'); }}>Contact us</a>
-            <a onClick={() => { setMenuOpen(false); navigate('/login'); }}>Log in</a>
-          </nav>
-        </div>
-      )}
+      <NavMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
 
       {/* News Section Title */}
       <section className="home-section">

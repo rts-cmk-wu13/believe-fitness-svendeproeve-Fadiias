@@ -36,9 +36,13 @@ Jeg tilføjede getClasses, getClass og getAsset funktioner i api.js.
 
 ## Dag 3
 
-Morgen - (tidspunkt)  
-Eftermiddag - (tidspunkt)
+Eftermiddag - (15.25)
+Tilføjet login og signup sider. Brugeren kan oprette sig og logge ind med brugernavn og adgangskode. Token gemmes i localStorage efter login.
+ 
+ NavMenu komponent lavet som en delt burger menu der bruges på alle sider.
 
+
+Lavet søgeside hvor brugeren kan søge efter hold og trænere. Viser resultater filtreret på navn, beskrivelse, dag og træner.
 ## Dag 4
 
 Morgen - (tidspunkt)  

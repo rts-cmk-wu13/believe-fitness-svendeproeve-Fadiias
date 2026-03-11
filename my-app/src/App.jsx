@@ -3,6 +3,9 @@ import SplashPage from './pages/SplashPage';
 import HomePage from './pages/HomePage';
 import ClassesPage from './pages/ClassesPage';
 import ClassDetailPage from './pages/ClassDetailPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import SearchPage from './pages/SearchPage';
 
 
 import './App.css';
@@ -16,6 +19,9 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/classes" element={<ClassesPage />} />
           <Route path="/classes/:id" element={<ClassDetailPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/search" element={<SearchPage />} />
         </Routes>
       </div>
     </BrowserRouter>

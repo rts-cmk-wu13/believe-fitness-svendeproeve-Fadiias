@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SplashPage.css';
-import bgImage from '../assets/Rectangle 1655.png';
+import bgImage1 from '../assets/Rectangle 1655.png';
+
+const bgImages = [bgImage1, '/welcome%20-%20center.png'];
+const randomBg = bgImages[Math.floor(Math.random() * bgImages.length)];
 
 function SplashPage() {
 const navigate = useNavigate();
@@ -13,7 +16,7 @@ const [btnVisible, setBtnVisible] = useState(false);
   }, []);
 
   return (
-    <div className="splash-page" style={{ backgroundImage: `url(${bgImage})` }}>
+    <div className="splash-page" style={{ backgroundImage: `url(${randomBg})` }}>
       <div className="splash-overlay" />
       <div className="splash-content">
         <h1 className="splash-logo">Believe<br />Yourself</h1>

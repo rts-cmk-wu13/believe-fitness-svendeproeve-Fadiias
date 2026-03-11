@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getClass, getAsset } from '../services/api';
+import NavMenu from '../components/NavMenu';
 import './ClassDetailPage.css';
 
 function ClassDetailPage() {
@@ -8,6 +9,7 @@ function ClassDetailPage() {
   const { id } = useParams();
   const [cls, setCls] = useState(null);
   const [trainerImg, setTrainerImg] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     getClass(id).then(data => {
@@ -29,7 +31,7 @@ function ClassDetailPage() {
 
         <button className="detail-back" onClick={() => navigate('/classes')}>←</button>
 
-        <div className="detail-menu">
+        <div className="detail-menu" onClick={() => setMenuOpen(true)}>
           <span></span>
           <span></span>
           <span></span>
@@ -55,6 +57,8 @@ function ClassDetailPage() {
       </div>
 
       <button className="detail-signup">SIGN UP</button>
+
+      <NavMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </div>
   );
 }
