@@ -57,6 +57,31 @@ export async function signup(username, password) {
   return res.json();
 }
 
+export async function getUser(id) {
+  const token = localStorage.getItem('token');
+  const res = await fetch(`${BASE_URL}/api/v1/users/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.json();
+}
+
+export async function enrollInClass(userId, classId) {
+  const token = localStorage.getItem('token');
+  const res = await fetch(`${BASE_URL}/api/v1/users/${userId}/classes/${classId}`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.json();
+}
+
+export async function leaveClass(userId, classId) {
+  const token = localStorage.getItem('token');
+  await fetch(`${BASE_URL}/api/v1/users/${userId}/classes/${classId}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
 export async function sendMessage(name, email, message) {
   const res = await fetch(`${BASE_URL}/api/v1/messages`, {
     method: 'POST',

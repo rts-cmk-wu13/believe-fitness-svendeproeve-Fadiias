@@ -46,8 +46,9 @@ Lavet søgeside hvor brugeren kan søge efter hold og trænere. Viser resultater
 ## Dag 4
 
 Morgen - (tidspunkt)  
-Eftermiddag - (tidspunkt)
+Eftermiddag - (15.00)
 
+Lavet profilside. Tilføjet login/logout i navigationsmenu og brugerens navn vises i hero-sektionen når man er logget ind.
 ## Dag 5
 
 Morgen - (tidspunkt)  

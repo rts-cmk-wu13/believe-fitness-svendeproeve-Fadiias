@@ -1,0 +1,133 @@
+.profile-page {
+  min-height: 100vh;
+  background: #fff;
+  padding: 49px 20px 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.profile-title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.profile-menu span {
+  display: block;
+  width: 21px;
+  height: 3px;
+  background: #9E9E9E;
+  border-radius: 2px;
+}
+
+.profile-menu span:last-child {
+  width: 11px;
+  align-self: flex-end;
+}
+
+.profile-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  background: #F1C40E;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-username {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+}
+
+.profile-role {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+}
+
+.profile-classes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-card {
+  border: 1px solid #9E9E9E;
+  border-radius: 24px;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-card__name {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.profile-card__time {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+}
+
+.profile-card__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-btn {
+  background: #F1C40E;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #000;
+  cursor: pointer;
+}
+
+.profile-empty {
+  font-size: 16px;
+  color: #9E9E9E;
+  text-align: center;
+  margin-top: 40px;
+}

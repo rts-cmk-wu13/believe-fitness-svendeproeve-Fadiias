@@ -18,6 +18,7 @@ function LoginPage() {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userId', data.userId);
         localStorage.setItem('role', data.role);
+        localStorage.setItem('username', username);
         navigate('/home');
       } else {
         setError('Wrong username or password.');

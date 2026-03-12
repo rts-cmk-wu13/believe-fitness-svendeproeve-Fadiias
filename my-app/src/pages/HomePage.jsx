@@ -15,6 +15,8 @@ function HomePage() {
   const [contact, setContact] = useState({ name: '', email: '', message: '' });
   const [contactMsg, setContactMsg] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const username = localStorage.getItem('username');
+  const isLoggedIn = !!localStorage.getItem('token');
 
   useEffect(() => {
     getNews().then(setNews).catch(() => {});
@@ -63,7 +65,10 @@ function HomePage() {
           <h1 className="home-hero__title">Classes for you</h1>
           <div className="home-hero__buttons">
             <button className="home-btn" onClick={() => navigate('/classes')}>CLASSES</button>
-            <button className="home-btn" onClick={() => navigate('/login')}>LOG IN</button>
+            {isLoggedIn
+              ? <span className="home-hero__username">{username}</span>
+              : <button className="home-btn" onClick={() => navigate('/login')}>LOG IN</button>
+            }
           </div>
         </div>
         {/* Hamburger menu - top right */}
