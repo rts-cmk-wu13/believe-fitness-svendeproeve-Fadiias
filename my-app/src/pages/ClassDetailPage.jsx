@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getClass, getAsset } from '../services/api';
+import { getClass, getAsset, getUser, enrollInClass, leaveClass } from '../services/api';
 import NavMenu from '../components/NavMenu';
 import './ClassDetailPage.css';
 
@@ -10,6 +10,12 @@ function ClassDetailPage() {
   const [cls, setCls] = useState(null);
   const [trainerImg, setTrainerImg] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [enrolled, setEnrolled] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [userClasses, setUserClasses] = useState([]);
+  const [signupError, setSignupError] = useState('');
+
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     getClass(id).then(data => {
@@ -18,7 +24,40 @@ function ClassDetailPage() {
         getAsset(data.trainer.assetId).then(a => setTrainerImg(a.url));
       }
     }).catch(() => {});
+
+    if (userId) {
+      getUser(userId).then(user => {
+        const already = user.classes?.some(c => String(c.id) === String(id));
+        setEnrolled(already);
+        setUserClasses(user.classes || []);
+      }).catch(() => {});
+    }
   }, [id]);
+
+  async function handleSignup() {
+    if (loading) return;
+    setSignupError('');
+    setLoading(true);
+    if (enrolled) {
+      await leaveClass(userId, id);
+      setEnrolled(false);
+    } else {
+      const sameDayClass = userClasses.find(c => c.classDay === cls.classDay && String(c.id) !== String(id));
+      if (sameDayClass) {
+        setSignupError(`You already have a class on ${cls.classDay}.`);
+        setLoading(false);
+        return;
+      }
+      if (cls.users && cls.users.length >= cls.maxParticipants) {
+        setSignupError('This class is full.');
+        setLoading(false);
+        return;
+      }
+      await enrollInClass(userId, id);
+      setEnrolled(true);
+    }
+    setLoading(false);
+  }
 
   if (!cls) return null;
 
@@ -56,7 +95,12 @@ function ClassDetailPage() {
         <p className="detail-trainer__name">{cls.trainer?.trainerName}</p>
       </div>
 
-      <button className="detail-signup">SIGN UP</button>
+      {userId && (
+        <button className="detail-signup" onClick={handleSignup} disabled={loading}>
+          {enrolled ? 'LEAVE' : 'SIGN UP'}
+        </button>
+      )}
+      {signupError && <p className="detail-error">{signupError}</p>}
 
       <NavMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </div>

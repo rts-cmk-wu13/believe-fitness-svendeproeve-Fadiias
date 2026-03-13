@@ -59,7 +59,7 @@ export async function signup(username, password) {
 
 export async function getUser(id) {
   const token = localStorage.getItem('token');
-  const res = await fetch(`${BASE_URL}/api/v1/users/${id}`, {
+  const res = await fetch(`${BASE_URL}/api/v1/users/${id}?t=${Date.now()}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return res.json();

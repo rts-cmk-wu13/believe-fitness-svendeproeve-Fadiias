@@ -51,5 +51,13 @@ Eftermiddag - (15.00)
 Lavet profilside. Tilføjet login/logout i navigationsmenu og brugerens navn vises i hero-sektionen når man er logget ind.
 ## Dag 5
 
-Morgen - (tidspunkt)  
-Eftermiddag - (tidspunkt)
+Morgen - (tidspunkt)
+Eftermiddag - (15.30)
+
+Færdiggjort tilmeldingsfunktionaliteten på klassesiden. SIGN UP-knappen tilmelder nu brugeren til et hold og skifter til LEAVE hvis brugeren allerede er tilmeldt. Knappen er skjult hvis brugeren ikke er logget ind.
+
+Rettet en fejl i API'et hvor addUser ikke blev awaited,
+
+Lavet admin-visning på profilsiden: når en bruger er logget ind som admin.
+
+

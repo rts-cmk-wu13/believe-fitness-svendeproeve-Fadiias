@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUser, leaveClass } from '../services/api';
+import { getUser, leaveClass, getClasses, getClass } from '../services/api';
 import NavMenu from '../components/NavMenu';
 import './ProfilePage.css';
 
@@ -8,19 +8,34 @@ function ProfilePage() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [allClasses, setAllClasses] = useState([]);
+  const [participants, setParticipants] = useState({});
 
   const userId = localStorage.getItem('userId');
+  const role = localStorage.getItem('role');
 
   useEffect(() => {
     if (!userId) { navigate('/login'); return; }
     getUser(userId).then(setUser).catch(() => {});
+    if (role === 'admin') {
+      getClasses().then(setAllClasses).catch(() => {});
+    }
   }, [userId]);
+
+  async function handleShowParticipants(classId) {
+    if (participants[classId]) {
+      setParticipants(prev => { const next = { ...prev }; delete next[classId]; return next; });
+    } else {
+      const cls = await getClass(classId);
+      setParticipants(prev => ({ ...prev, [classId]: cls.users || [] }));
+    }
+  }
 
   async function handleLeave(classId) {
     await leaveClass(userId, classId);
     setUser(prev => ({
       ...prev,
-      Classes: prev.Classes.filter(c => c.id !== classId),
+      classes: prev.classes.filter(c => c.id !== classId),
     }));
   }
 
@@ -50,19 +65,42 @@ function ProfilePage() {
       </div>
 
       <div className="profile-classes">
-        {user.Classes && user.Classes.length > 0 ? (
-          user.Classes.map(cls => (
+        {role === 'admin' ? (
+          allClasses.map(cls => (
             <div key={cls.id} className="profile-card">
               <p className="profile-card__name">{cls.className}</p>
               <p className="profile-card__time">{cls.classDay} - {cls.classTime}</p>
               <div className="profile-card__actions">
                 <button className="profile-btn" onClick={() => navigate(`/classes/${cls.id}`)}>SHOW CLASS</button>
-                <button className="profile-btn" onClick={() => handleLeave(cls.id)}>LEAVE</button>
+                <button className="profile-btn" onClick={() => handleShowParticipants(cls.id)}>
+                  {participants[cls.id] ? 'HIDE' : 'PARTICIPANTS'}
+                </button>
               </div>
+              {participants[cls.id] && (
+                <ul className="profile-participants">
+                  {participants[cls.id].length === 0
+                    ? <li>No participants</li>
+                    : participants[cls.id].map(u => <li key={u.id}>{u.username}</li>)
+                  }
+                </ul>
+              )}
             </div>
           ))
         ) : (
-          <p className="profile-empty">You are not signed up for any classes.</p>
+          user.classes && user.classes.length > 0 ? (
+            user.classes.map(cls => (
+              <div key={cls.id} className="profile-card">
+                <p className="profile-card__name">{cls.className}</p>
+                <p className="profile-card__time">{cls.classDay} - {cls.classTime}</p>
+                <div className="profile-card__actions">
+                  <button className="profile-btn" onClick={() => navigate(`/classes/${cls.id}`)}>SHOW CLASS</button>
+                  <button className="profile-btn" onClick={() => handleLeave(cls.id)}>LEAVE</button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="profile-empty">You are not signed up for any classes.</p>
+          )
         )}
       </div>
 
